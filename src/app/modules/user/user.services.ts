@@ -26,8 +26,25 @@ const userCreateService =async(payload : Partial<IUser>)=>{
         });
 }
 
+const userObserverService =async(userId : string)=>{
+    
+
+    const isUserExist = await User.findById(userId);
+
+    if(!isUserExist){ 
+        throw new AppError(httpStatusCode.BAD_REQUEST,"User Already Exist.");
+    }
+    
+    return {
+        _id : isUserExist._id,
+            name : isUserExist.name,
+            email : isUserExist.email
+    }
+}
+
  
 
 export const userServices ={
-    userCreateService
+    userCreateService,
+    userObserverService
 }

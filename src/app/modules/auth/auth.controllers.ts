@@ -18,6 +18,7 @@ const authLoginController = asyncHandler(async(req : Request, res : Response,nex
 
 
 
+
 const authLogoutController = asyncHandler(async(req : Request, res : Response,next : NextFunction)=>{
     
     res.clearCookie('accessToken',{

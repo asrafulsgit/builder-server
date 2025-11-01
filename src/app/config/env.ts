@@ -9,6 +9,7 @@ interface EnvsConfig {
   JWT_ACCESS_TOKEN_SECRET: string;
   JWT_ACCESS_TOKEN_EXPIRESIN: string;
   BCRYPT_SALT: string;
+  FRONTENT_URL : string;
 }
 
 const envsLoading = (): EnvsConfig => {
@@ -18,7 +19,8 @@ const envsLoading = (): EnvsConfig => {
     "NODE_ENV",
     "JWT_ACCESS_TOKEN_SECRET",
     "JWT_ACCESS_TOKEN_EXPIRESIN",
-    "BCRYPT_SALT"
+    "BCRYPT_SALT",
+    "FRONTENT_URL"
   ];
 
   properties.forEach((key) => {
@@ -35,6 +37,7 @@ const envsLoading = (): EnvsConfig => {
     JWT_ACCESS_TOKEN_EXPIRESIN: process.env
       .JWT_ACCESS_TOKEN_EXPIRESIN as string,
     BCRYPT_SALT: process.env.BCRYPT_SALT as string,
+    FRONTENT_URL : process.env.FRONTENT_URL as string
   };
 };
 
