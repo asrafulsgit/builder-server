@@ -3,6 +3,7 @@ import cookieParser from 'cookie-parser';
 import cors from 'cors';
 import { globalErrorHandle } from "./app/middlewares/globalError";
 import { notFoundHandler } from "./app/middlewares/notFound";
+import { router } from "./app/routes/routes";
 
 
 const app : Application = express();
@@ -12,6 +13,7 @@ app.use(express.json());
 app.use(cors());
 
 
+app.use('/api/v1',router)
 
 
 app.use(globalErrorHandle);
