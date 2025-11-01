@@ -3,8 +3,6 @@ import mongoose from 'mongoose';
 import { envs } from './app/config/env';
 import app from './app';
 
-
-
 let server : Server ;
 
 
