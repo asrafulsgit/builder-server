@@ -4,6 +4,7 @@ import { authServices } from "./auth.services";
 import { setAuthTokens } from "../../utils/setAuthTokens";
 import { sendResponse } from "../../utils/sendResponse";
 import httpStatusCode from 'http-status-codes';
+import { envs } from "../../config/env";
 
 const authLoginController = asyncHandler(async(req : Request, res : Response,next : NextFunction)=>{
     const user = await authServices.authLoginService(req.body);
@@ -23,7 +24,7 @@ const authLogoutController = asyncHandler(async(req : Request, res : Response,ne
     
     res.clearCookie('accessToken',{
         httpOnly : true,
-        secure : true,
+        secure : envs.NODE_ENV === 'production',
         sameSite : 'none'
     })
     

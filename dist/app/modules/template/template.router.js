@@ -1,0 +1,11 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.templateRouter = void 0;
+const express_1 = require("express");
+const template_controllers_1 = require("./template.controllers");
+const authentication_middleware_1 = require("../../middlewares/authentication.middleware");
+const router = (0, express_1.Router)();
+router.post('/create', (0, authentication_middleware_1.authentication)(), template_controllers_1.templateControllers.createTemplate);
+router.get('/my-projects', (0, authentication_middleware_1.authentication)(), template_controllers_1.templateControllers.getMyTemplates);
+router.get('/project/:id', (0, authentication_middleware_1.authentication)(), template_controllers_1.templateControllers.getSingleTemplate);
+exports.templateRouter = router;
