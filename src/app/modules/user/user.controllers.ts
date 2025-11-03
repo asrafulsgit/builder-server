@@ -5,7 +5,6 @@ import { asyncHandler } from "../../utils/asyncHandler";
 import { sendResponse } from "../../utils/sendResponse";
 import { JwtPayload } from "jsonwebtoken";
 
-
 const createUser = asyncHandler(async(req : Request, res : Response,next : NextFunction)=>{
  
     await userServices.userCreateService(req.body);

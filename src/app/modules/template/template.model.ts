@@ -4,8 +4,7 @@ import { IComponent, ITemplate } from "./template.interface";
 const componentSchema = new Schema<IComponent>(
   {
     id: { type: String, required: true },
-    type: { type: String, required: true },
-    order: { type: Number, required: true },
+    componentId : { type: String, required: true },
   },
   { _id: false,versionKey : false, timestamps : false }
 );
@@ -22,6 +21,5 @@ const templateSchema = new Schema<ITemplate>(
   },
   { timestamps: true,versionKey : false }
 );
-
 
 export const Template = model<ITemplate>("Template", templateSchema);

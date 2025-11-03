@@ -6,8 +6,12 @@ import bcrypt from 'bcryptjs';
 import { ITemplate } from "./template.interface";
 import { Template } from "./template.model";
 
-const createTemplateService =async(payload : Partial<ITemplate>)=>{
-  const template = await Template.create(payload);
+const createTemplateService =async(payload : Partial<ITemplate>,userId : string)=>{
+    console.log(payload);
+  const template = await Template.create({
+    userId,
+    ...payload
+  });
   return template;
 }
 

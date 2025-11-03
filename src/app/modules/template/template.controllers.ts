@@ -7,8 +7,8 @@ import { JwtPayload } from "jsonwebtoken";
 
 
 const createTemplate = asyncHandler(async(req : Request, res : Response,next : NextFunction)=>{
- 
-    const template = await templateServices.createTemplateService(req.body);
+    const user = req.user as JwtPayload;
+    const template = await templateServices.createTemplateService(req.body,user.id as string);
 
     sendResponse(res,{
         statusCode : httpStatusCode.CREATED,

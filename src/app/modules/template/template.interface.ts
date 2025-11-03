@@ -2,8 +2,7 @@ import { Types } from "mongoose";
 
 export interface IComponent {
   id : string;
-  type: string;  
-  order: number;
+  componentId : string;  
 }
 
 export interface ITemplate{
