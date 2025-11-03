@@ -1,13 +1,11 @@
 
 import httpStatusCode from "http-status-codes";
-
-import { JwtPayload } from "jsonwebtoken";
-import bcrypt from 'bcryptjs';
+ 
 import { ITemplate } from "./template.interface";
 import { Template } from "./template.model";
+import AppError from "../../middlewares/appError";
 
 const createTemplateService =async(payload : Partial<ITemplate>,userId : string)=>{
-    console.log(payload);
   const template = await Template.create({
     userId,
     ...payload
@@ -25,7 +23,16 @@ const getMyTemplatesService =async(userId : string)=>{
     };
 }
 
+const getSingleTemplateService =async(userId : string,templateId : string)=>{
+    const template = await Template.findOne({_id : templateId,userId});
+    if(!template){
+        throw new AppError(httpStatusCode.NOT_FOUND,"Project not found.")
+    }
+    return template;
+}
+
 export const templateServices ={
     createTemplateService,
-    getMyTemplatesService
+    getMyTemplatesService,
+    getSingleTemplateService
 }
